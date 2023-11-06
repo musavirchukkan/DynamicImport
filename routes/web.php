@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/import', [ImportController::class, 'index'])->name('import.index');
+Route::post('/import', [ImportController::class, 'processImport'])->name('import.process');
+Route::post('/import/store', [ImportController::class, 'processStore'])->name('import.store');
+// Route::resource("/students", StudentController::class);
+
